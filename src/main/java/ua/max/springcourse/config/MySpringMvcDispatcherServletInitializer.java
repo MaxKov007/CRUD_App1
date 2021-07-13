@@ -23,13 +23,13 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
     }
 
     @Override
-    public void onStartup(ServletContext aServletContext) throws ServletException {
-        super.onStartup(aServletContext);
-        registerHiddenFieldFilter(aServletContext);
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        registerHiddenFieldFilter(servletContext);
     }
 
-    private void registerHiddenFieldFilter(ServletContext aContext) {
-        aContext.addFilter("hiddenHttpMethodFilter",
-                           new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null , true, "/*");
+    private void registerHiddenFieldFilter(ServletContext context) {
+        context.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter())
+               .addMappingForUrlPatterns(null, true, "/*");
     }
 }
